@@ -1,4 +1,7 @@
 # EolZip
+[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 ## What is EolZip
 Written in cpp, EolZip is a compression software zipping files using huffman coding, which is no more than a homework task. You will not want to read the source codes because it s**ks. Nor will you want to actually put it into use at any time, or you will regret that you had ever learned to use a computer.
 
