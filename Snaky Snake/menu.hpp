@@ -4,19 +4,22 @@
 #include <string>
 #include <vector>
 #include <cstddef>
+#include <functional>
 #include <initializer_list>
 
 struct GameOption
 {
-    const unsigned int difficulty;
+    unsigned int difficulty;
+    GameOption() : difficulty(0) {}
 };
 
 class MenuItem
 {
 public:
     const std::string title;
-    GameOption (* const fp)();
-    MenuItem(const std::string&& title, GameOption (* const f)());
+    std::function<void ()> fp;
+
+    MenuItem(const std::string&& title, std::function<void ()>);
     MenuItem(const MenuItem& item);
     ~MenuItem();
 };
@@ -42,8 +45,8 @@ class Menu
     const size_t marginLeft;
 public:
     void print_menu();
-    GameOption get_option();
-    Menu(std::vector<MenuItem>&& items, size_t layer = 0);
+    void exec();
+    explicit Menu(std::vector<MenuItem>&& items, size_t layer = 0);
 };
 
 #endif // SNAKYSNAKES_MENU_HPP

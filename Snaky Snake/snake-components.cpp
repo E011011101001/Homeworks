@@ -123,10 +123,10 @@ SnakeNode::SnakeNode(const Coordinate& r)
 }
 
 std::map<unsigned int, std::string> Score::levelStrMap {
-        { 0, "ÈëÃÅ°æ" },
-        { 1, "½ø½×°æ" },
-        { 2, "¸ß¼¶°æ" },
-        { 3, "·Å·É°æ" }
+        { 0, "å…¥é—¨ç‰ˆ" },
+        { 1, "è¿›é˜¶ç‰ˆ" },
+        { 2, "é«˜çº§ç‰ˆ" },
+        { 3, "æ”¾é£žç‰ˆ" }
 };
 
 Score::Score(unsigned int difficulty)

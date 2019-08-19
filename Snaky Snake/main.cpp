@@ -11,23 +11,25 @@ const std::string recordFile("record.txt");
 int main()
 {
     hide_cursor();
+
+    GameOption options;
     Menu menu(std::vector<MenuItem> {{
-        "ÈëÃÅ°æ", []() -> GameOption {
-            return { 0 };
+        "å…¥é—¨ç‰ˆ", [&options]() -> void {
+            options.difficulty = 0;
         }
     }, {
-        "½ø½×°æ", []() -> GameOption {
-            return { 1 };
+        "è¿›é˜¶ç‰ˆ", [&options]() -> void {
+            options.difficulty = 1;
         }
     }, {
-        "¸ß¼¶°æ", []() -> GameOption {
-            return { 2 };
+        "é«˜çº§ç‰ˆ", [&options]() -> void {
+            options.difficulty = 2;
         }
     }});
-    const GameOption option(menu.get_option());
+
     try
     {
-        SnakySnake game(option, recordFile);
+        SnakySnake game(options, recordFile);
         game.run();
         reveal_cursor();
     }

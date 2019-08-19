@@ -14,7 +14,7 @@ void Menu::print_menu()
     }
 }
 
-GameOption Menu::get_option()
+void Menu::exec()
 {
     do
     {
@@ -35,10 +35,11 @@ GameOption Menu::get_option()
                     break;
                 case enter:
                     clear_screen();
-                    return _items.at(arrow.place()).fp();
+                    _items.at(arrow.place()).fp();
+                    return;
                 case esc:
                     if (_layer >= 1)
-                        return {}; // TODO
+                        return; // TODO
                     else
                         validInput = false;
                     break;
@@ -50,7 +51,7 @@ GameOption Menu::get_option()
     } while (true);
 }
 
-MenuItem::MenuItem(const std::string&& title, GameOption (* const fp)())
+MenuItem::MenuItem(const std::string&& title, std::function<void ()> fp)
     : title(title), fp(fp)
 {
 }
@@ -67,6 +68,7 @@ Menu::Menu(std::vector<MenuItem>&& items, size_t layer /* 0 by default */)
 // TODO: test marginLeft
     : _layer(layer), _items(items) ,arrow(items.size()), marginLeft(5)
 {
+    exec();
 }
 
 MenuArrow::MenuArrow(size_t size)
